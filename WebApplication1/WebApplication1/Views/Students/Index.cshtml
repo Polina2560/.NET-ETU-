@@ -1,0 +1,21 @@
+﻿@using PL.Models;
+
+
+@model List<StudentViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Students List</h2>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a asp-action="Index" asp-controller="StudentPersonal" asp-route-studentId="@item.Student.StudentId">@item.Student.StudentName</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
