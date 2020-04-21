@@ -1,0 +1,17 @@
+﻿@using PL.Models;
+
+@model TeacherEditModel
+
+@if (Model != null)
+{
+    var _currentModel = (TeacherEditModel)Model;
+    <form action="/Teachers/SaveTeacher" method="post">
+        @*<input type="hidden" value="@ViewBag.PageType" name="PageType" />*@
+
+        <h1>Edit Teacher</h1>
+        <input name="TeacherId" type="hidden" value="@_currentModel.TeacherId" />
+        <input name="TeacherName" value="@_currentModel.TeacherName" />
+        @*<textarea name="TeacherName">@_currentModel.TeacherName</textarea>*@
+        <input type="submit" />
+    </form>
+}

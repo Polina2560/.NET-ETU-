@@ -14,12 +14,15 @@ namespace PL.Models
         public Homework NextHomework { get; set; }
     }
 
-    /*public class HomeworkEditModel 
+    public class HomeworkEditModel 
     {
         [Required]
         public int HomeworkId { get; set; }
 
+        public int HomeworkTeacherId { get; set; }
+        public int HomeworkStudentId { get; set; }
+
         public int HomeworkMark { get; set; }
         public DateTime HomeworkDate { get; set; }
-    }*/
+    }
 }

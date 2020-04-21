@@ -17,11 +17,11 @@ namespace PL.Models
         public List<HomeworkViewModel> StudentHomeworks { get; set; }
     }
 
-    /*public class StudentEditModel
+    public class StudentEditModel
     {
         [Required]
         public int StudentId { get; set; }
 
         public string StudentName { get; set; }
-    }*/
+    }
 }

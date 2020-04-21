@@ -42,7 +42,7 @@ namespace PL.Services
             return new TeacherViewModel() { Teacher = _teacher, TeacherHomeworks = _homeworksViewModelList };
         }
 
-        /*public TeacherEditModel GetTeacherEditModel(int teacherid = 0)
+        public TeacherEditModel GetTeacherEditModel(int teacherid = 0)
         {
             if (teacherid != 0)
             {
@@ -75,10 +75,18 @@ namespace PL.Services
             return TeacherDBToViewModelById(_teacherDbModel.TeacherId);
         }
 
+        public void DeleteTeacherFromDb(int studentId)
+        {
+            Teacher _studentDbModel;
+            _studentDbModel = _dataManager.Teachers.GetTeacherById(studentId);
+            _dataManager.Teachers.DeleteTeacher(_studentDbModel);
+
+        }
+
         public TeacherEditModel CreateNewTeacherEditModel()
         {
             return new TeacherEditModel() { };
-        }*/
+        }
 
     }
 }

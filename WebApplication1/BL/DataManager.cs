@@ -9,19 +9,19 @@ namespace BL
     public class DataManager
     {
 
-        private IStudentRepository _studentRepository;
-        private IHomeworkRepository _homeworkRepository;
-        private ITeacherRepository _teacherRepository;
+        private IStudentContract _studentContract;
+        private IHomeworkContract _homeworkContract;
+        private ITeacherContract _teacherContract;
 
-        public DataManager(IStudentRepository studentRepository, IHomeworkRepository homeworkRepository, ITeacherRepository teacherRepository)
+        public DataManager(IStudentContract studentContract, IHomeworkContract homeworkContract, ITeacherContract teacherContract)
         {
-            _studentRepository = studentRepository;
-            _homeworkRepository = homeworkRepository;
-            _teacherRepository = teacherRepository;
+            _studentContract = studentContract;
+            _homeworkContract = homeworkContract;
+            _teacherContract = teacherContract;
         }
 
-        public IStudentRepository Students { get { return _studentRepository; } }
-        public IHomeworkRepository Homeworks { get { return _homeworkRepository; } }
-        public ITeacherRepository Teachers { get { return _teacherRepository; } }
+        public IStudentContract Students { get { return _studentContract; } }
+        public IHomeworkContract Homeworks { get { return _homeworkContract; } }
+        public ITeacherContract Teachers { get { return _teacherContract; } }
     }
 }

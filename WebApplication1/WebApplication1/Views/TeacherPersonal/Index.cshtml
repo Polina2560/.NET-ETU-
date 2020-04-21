@@ -10,17 +10,21 @@
 <div class="row">
     <div class="col-md-12">
         <h2>@Model.Teacher.TeacherName</h2>
+        <a asp-action="TeacherEditor" asp-controller="Teachers" asp-route-teacherId="@Model.Teacher.TeacherId"> - edit</a>
+        <a asp-action="TeacherDelete" asp-controller="Teachers" asp-route-teacherId="@Model.Teacher.TeacherId">         - delete</a>
         <ul>
             @if (Model.TeacherHomeworks != null)
             {
                 foreach (var subItem in Model.TeacherHomeworks)
                 {
-                     <li>Homework Id:  @subItem.Homework.HomeworkId
-                        <ul>
-                            <li>Mark: @subItem.Homework.HomeworkMark</li>
-                            <li>Date: @subItem.Homework.HomeworkDate.ToString("dd:MM:yyyy")</li>
-                        </ul>
-                     </li>
+            <li>
+                Homework Id:  @subItem.Homework.HomeworkId
+                @*<a asp-action="HomeworkEditor" asp-controller="Homework" asp-route-homeworkId="@subItem.Homework.HomeworkId"> - edit Homework</a>*@
+                <ul>
+                    <li>Mark: @subItem.Homework.HomeworkMark</li>
+                    <li>Date: @subItem.Homework.HomeworkDate.ToString("dd:MM:yyyy")</li>
+                </ul>
+            </li>
                 }
             }
         </ul>

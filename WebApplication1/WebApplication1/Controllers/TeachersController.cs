@@ -28,5 +28,32 @@ namespace WebApplication1.Controllers
             return View(_tch);
         }
 
+        [HttpGet]
+        public IActionResult TeacherEditor(int teacherId)
+        {
+            TeacherEditModel _editModel;
+
+            if (teacherId != 0)
+                _editModel = _servicesmanager.Teachers.GetTeacherEditModel(teacherId);
+            else
+                _editModel = _servicesmanager.Teachers.CreateNewTeacherEditModel();
+
+            return View(_editModel);
+        }
+
+        [HttpPost]
+        public IActionResult SaveTeacher(TeacherEditModel model)
+        {
+            _servicesmanager.Teachers.SaveTeacherEditModelToDb(model);
+            return RedirectToAction("Index", "Teachers", new { teacherId = model.TeacherId });
+        }
+
+        [HttpGet]
+        public IActionResult TeacherDelete(int teacherId)
+        {
+            _servicesmanager.Teachers.DeleteTeacherFromDb(teacherId);
+            return RedirectToAction("Index", "Teachers");
+        }
+
     }
 }

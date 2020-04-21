@@ -25,13 +25,14 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Teachers List</h2>
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li>
-                       <a asp-action="Index" asp-controller="TeacherPersonal" asp-route-teacherId="@item.Teacher.TeacherId">@item.Teacher.TeacherName</a>
-                    </li>
-                 }
-            </ul>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a asp-action="Index" asp-controller="TeacherPersonal" asp-route-teacherId="@item.Teacher.TeacherId">@item.Teacher.TeacherName</a>
+                </li>
+            }
+        </ul>
+        <a asp-action="TeacherEditor" asp-controller="Teachers" asp-route-teacherId="0">- create new teacher</a>
     </div>
 </div>

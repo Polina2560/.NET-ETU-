@@ -28,5 +28,33 @@ namespace WebApplication1.Controllers
             return View(_st);
         }
 
+
+        [HttpGet]
+        public IActionResult StudentEditor(int studentId)
+        {
+            StudentEditModel _editModel;
+
+            if (studentId != 0)
+                _editModel = _servicesmanager.Students.GetStudentEditModel(studentId);
+            else
+                _editModel = _servicesmanager.Students.CreateNewStudentEditModel();
+
+            return View(_editModel);
+        }
+
+        [HttpPost]
+        public IActionResult SaveStudent(StudentEditModel model)
+        {
+            _servicesmanager.Students.SaveStudentEditModelToDb(model);
+            return RedirectToAction("Index", "Students", new { studentId = model.StudentId});
+        }
+
+        [HttpGet]
+        public IActionResult StudentDelete(int studentId)
+        {
+            _servicesmanager.Students.DeleteStudentFromDb(studentId);
+            return RedirectToAction("Index", "Students");
+        }
+
     }
 }

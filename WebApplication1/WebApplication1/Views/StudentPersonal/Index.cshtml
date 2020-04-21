@@ -10,6 +10,8 @@
 <div class="row">
     <div class="col-md-12">
         <h2>@Model.Student.StudentName</h2>
+        <a asp-action="StudentEditor" asp-controller="Students" asp-route-studentId="@Model.Student.StudentId"> - edit Student</a>
+        <a asp-action="StudentDelete" asp-controller="Students" asp-route-studentId="@Model.Student.StudentId">         - delete</a>
         <ul>
             @if (Model.StudentHomeworks != null)
             {
@@ -17,10 +19,12 @@
                 {
             <li>
                 Homework Id:  @subItem.Homework.HomeworkId
+                @*<a asp-action="HomeworkEditor" asp-controller="Homework" asp-route-homeworkId="@subItem.Homework.HomeworkId"> - edit Homework</a>*@
                 <ul>
                     <li>Mark: @subItem.Homework.HomeworkMark</li>
                     <li>Date: @subItem.Homework.HomeworkDate.ToString("dd:MM:yyyy")</li>
                 </ul>
+
             </li>
                 }
             }

@@ -43,7 +43,7 @@ namespace PL.Services
             return new StudentViewModel() { Student = _student, StudentHomeworks = _homeworksViewModelList };
         }
 
-        /*public StudentEditModel GetStudentEditModel(int studentid = 0)
+        public StudentEditModel GetStudentEditModel(int studentid = 0)
         {
             if (studentid != 0)
             {
@@ -76,9 +76,18 @@ namespace PL.Services
             return StudentDBToViewModelById(_studentDbModel.StudentId);
         }
 
+
+        public void DeleteStudentFromDb(int studentId)
+        {
+            Student _studentDbModel;
+                _studentDbModel = _dataManager.Students.GetStudentById(studentId);
+            _dataManager.Students.DeleteStudent(_studentDbModel);
+
+        }
+
         public StudentEditModel CreateNewStudentEditModel()
         {
             return new StudentEditModel() { };
-        }*/
+        }
     }
 }

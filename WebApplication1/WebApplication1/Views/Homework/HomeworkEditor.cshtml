@@ -1,0 +1,22 @@
+﻿
+@using PL.Models;
+
+
+@model HomeworkEditModel
+
+@if (Model != null)
+{
+    var _currentModel = (HomeworkEditModel)Model;
+<form action="/Homeworks/SaveHomework" method="post">
+    @*<input type="hidden" value="@ViewBag.PageType" name="PageType" />*@
+
+    <h1>Edit Homework</h1>
+    <input name="HomeworkId" type="hidden" value="@_currentModel.HomeworkId" />
+    <input name="HomeworkMark" value="@_currentModel.HomeworkMark" />
+    <input name="HomeworkDate" value="@_currentModel.HomeworkDate" />
+    <input name="TeacherId" value="@_currentModel.HomeworkTeacherId" />
+    <input name="StudentId" value="@_currentModel.HomeworkStudentId" />
+    @*<textarea name="HomeworkName">@_currentModel.HomeworkName</textarea>*@
+    <input type="submit" />
+</form>
+}

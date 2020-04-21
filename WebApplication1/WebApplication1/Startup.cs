@@ -38,9 +38,9 @@ namespace WebApplication1
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EFDbContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("DL")));
-            services.AddTransient<IStudentRepository, EFStudentRepository>();
-            services.AddTransient<IHomeworkRepository, EFHomeworkRepository>();
-            services.AddTransient<ITeacherRepository, EFTeacherRepository>();
+            services.AddTransient<IStudentContract, EFStudentContract>();
+            services.AddTransient<IHomeworkContract, EFHomeworkContract>();
+            services.AddTransient<ITeacherContract, EFTeacherContract>();
             services.AddScoped<DataManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

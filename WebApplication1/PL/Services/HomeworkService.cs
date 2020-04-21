@@ -32,14 +32,16 @@ namespace PL.Services
             return _model;
         }
 
-        /*public HomeworkEditModel GetHomeworkEditModel(int homeworkId)
+        public HomeworkEditModel GetHomeworkEditModel(int homeworkId)
         {
             var _dbModel = dataManager.Homeworks.GetHomeworkById(homeworkId);
             var _editModel = new HomeworkEditModel()
             {
                 HomeworkId = _dbModel.HomeworkId = _dbModel.HomeworkId,
                 HomeworkMark = _dbModel.HomeworkMark,
-                HomeworkDate = _dbModel.HomeworkDate
+                HomeworkDate = _dbModel.HomeworkDate,
+                HomeworkTeacherId = dataManager.Homeworks.GetTeacherFromHomework(homeworkId).TeacherId,
+                HomeworkStudentId = dataManager.Homeworks.GetTeacherFromHomework(homeworkId).TeacherId
             };
             return _editModel;
         }
@@ -57,13 +59,24 @@ namespace PL.Services
             }
             homework.HomeworkMark = editModel.HomeworkMark;
             homework.HomeworkDate = editModel.HomeworkDate;
+            homework.HomeworkTeacher = dataManager.Homeworks.GetTeacherFromHomework(editModel.HomeworkTeacherId);
+            homework.HomeworkStudent = dataManager.Homeworks.GetStudentFromHomework(editModel.HomeworkStudentId);
             dataManager.Homeworks.SaveHomework(homework);
             return HomeworkDBModelToView(homework.HomeworkId);
         }
 
+        public void DeleteHomeworkFromDb(int homeworkId)
+        {
+            Homework _homeworkDbModel;
+            _homeworkDbModel = dataManager.Homeworks.GetHomeworkById(homeworkId);
+            dataManager.Homeworks.DeleteHomework(_homeworkDbModel);
+
+        }
+
+
         public HomeworkEditModel CreateNewHomeworkEditModel(int homeworkId)
         {
             return new HomeworkEditModel() { HomeworkId = homeworkId };
-        }*/
+        }
     }
 }
